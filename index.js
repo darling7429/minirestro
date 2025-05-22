@@ -1,5 +1,5 @@
 import React from "react";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import ReactDOM from "react-dom/client";
 
 const Header = () => {
@@ -27,16 +27,30 @@ const Header = () => {
   );
 };
 
-
-const Restrocard=()=>{
-  return(
+const Restrocard = () => {
+  return (
     <div className="res-card">
-      
+      <div className="res_img">
+        <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_288,c_fill/herq2apqf9n2piqbuuk0" />
+      </div>
 
-      
+      <div className="res-description">
+        <div className="res-head">
+          <h3>Local</h3>
+          <div className="rating_logo">4.2 <i class="fa-solid fa-star"></i></div>
+        </div>
+        <p>40-45 mins </p>
+        <div>
+           <p>American,continental,italian</p>
+        <p className="timings">opens at 12 noon </p>
+
+        </div>
+
+       
+      </div>
     </div>
-  )
-}
+  );
+};
 
 const Body = () => {
   return (
@@ -60,9 +74,9 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurants">
-        <Restrocard/>
-
-
+        <Restrocard />
+        <Restrocard />
+        <Restrocard />
       </div>
     </div>
   );
