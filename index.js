@@ -27,7 +27,8 @@ const Header = () => {
   );
 };
 
-const Restrocard = () => {
+const Restrocard = (props) => {
+  console.log(props);
   return (
     <div className="res-card">
       <div className="res_img">
@@ -36,17 +37,16 @@ const Restrocard = () => {
 
       <div className="res-description">
         <div className="res-head">
-          <h3>Local</h3>
-          <div className="rating_logo">4.2 <i class="fa-solid fa-star"></i></div>
+          <h3>{props.resname}</h3>
+          <div className="rating_logo">
+            {props.rating} <i className="fa-solid fa-star"></i>
+          </div>
         </div>
         <p>40-45 mins </p>
         <div>
-           <p>American,continental,italian</p>
-        <p className="timings">opens at 12 noon </p>
-
+          <p>American,continental,italian</p>
+          <p className="timings">opens at 12 noon </p>
         </div>
-
-       
       </div>
     </div>
   );
@@ -64,7 +64,7 @@ const Body = () => {
         <input
           type="text"
           className="search"
-          placeholder="   search for restaurant item or more "
+          placeholder="search for restaurant item or more "
         />
         <button type="submit">
           <img
@@ -72,11 +72,23 @@ const Body = () => {
             alt="Search"
           />
         </button>
+        
       </div>
+      <div className="side_img">
+        
+        <img className="side_img1" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/testing/seo-home/Veggies_new.png" />
+        <img className="side_img2" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/testing/seo-home/Sushi_replace.png" />
+      </div>
+      
       <div className="restaurants">
-        <Restrocard />
-        <Restrocard />
-        <Restrocard />
+        <Restrocard resname="paradise" rating="4.8" />
+        <Restrocard resname="shadab" rating="4.5" />
+        <Restrocard resname="shadab" rating="4.5" />
+          <Restrocard resname="shadab" rating="4.5" />
+            <Restrocard resname="shadab" rating="4.5" />
+              <Restrocard resname="shadab" rating="4.5" />
+         
+        
       </div>
     </div>
   );
@@ -89,9 +101,12 @@ const Footer = () => {
 const App = () => {
   return (
     <>
-      <Header />
+    <div className="app_wrapper">
+<Header />
       <Body />
       <Footer />
+    </div>
+      
     </>
   );
 };
