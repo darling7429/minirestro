@@ -1,5 +1,10 @@
+import { useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 const Header = () => {
+  const[login,setlogin]=useState(false)
+  function handlelogin(){
+    setlogin(!login)
+  }
   return (
     <div className="header">
       <div className="logo">
@@ -17,7 +22,7 @@ const Header = () => {
           <button className="nav_button1">
             Get The App <i className="fa-solid fa-square-arrow-up-right"></i>
           </button>
-          <button className="nav_button2">Sign in</button>
+          <button className="nav_button2" onClick={handlelogin}>{login?"Sign-out":"Sign-in"}</button>
         </ul>
       </div>
     </div>

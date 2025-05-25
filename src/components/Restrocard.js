@@ -17,13 +17,13 @@ const Restrocard = (props) => {
           <div className="res-head">
             <h3>{name}</h3>
             <div className="rating_logo">
-              {avgRating} <i className="fa-solid fa-star"></i>
+              {avgRating}  <i className="fa-solid fa-star"> </i>
             </div>
           </div>
 
           <div>
             <h3>{cuisines.join(" , ")}</h3>
-            <h2 className="timings"> &#8377; {costForTwo / 100} for two </h2>
+            <h2 className="timings">  {costForTwo }  </h2>
           </div>
         </div>
       </div>
