@@ -8,6 +8,7 @@ import Spinner from "./Spinner";
 const Body = () => {
   const [data, setdata] = useState([]);
   const [search, setsearch] = useState("");
+  const[onload,setonload]=useState([])
 
   function filterdata() {
   
@@ -15,12 +16,13 @@ const Body = () => {
       
       return data?.card?.card?.info?.avgRating > 4.3;
     });
-    setdata(data2);
+    setonload(data2);
   }
   
   function handlechange(e) {
     setsearch(e.target.value);
-   
+
+    
   }
   const fetchdata = async() => {
     const data = await fetch(
@@ -30,17 +32,31 @@ const Body = () => {
     const json=await data.json();
 
     setdata(json?.data?.cards?.slice(3))
+    console.log(data)
+    setonload(json?.data?.cards?.slice(3))
     
     
 
   };
 
+  function searchrestro(){
+    const search_res=data.filter((data)=>{
+     return ( data.card.card.info.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    })
+  
+    
+    setonload(search_res)
+    
+
+    console.log(search)
+    console.log(search_res)
+  }
+
   useEffect(() => {
     fetchdata();
   }, []);
 
-  
-  return data.length===0?<Spinner/>: (
+  return onload.length===0?<Spinner/>: (
     <div className="body">
       <div className="search_bar">
         <h1>
@@ -53,10 +69,10 @@ const Body = () => {
           type="text"
           className="search"
           placeholder="search for restaurant item or more "
-          value={search}
+          
           onChange={handlechange}
         />
-        <button className="search_button" type="submit">
+        <button className="search_button" type="submit" onClick={searchrestro}>
           <img
             src="https://cdn-icons-png.flaticon.com/512/622/622669.png"
             alt="Search"
@@ -73,7 +89,7 @@ const Body = () => {
       </div>
 
       <div className="restaurants">
-        <Restrocard resobj={data} />
+        <Restrocard resobj={onload} />
       </div>
     </div>
   );

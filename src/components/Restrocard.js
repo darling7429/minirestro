@@ -1,6 +1,7 @@
 import { CDN_URL } from "../utils/constants";
 const Restrocard = (props) => {
   const { resobj } = props;
+  console.log(resobj)
 
   // const { name, cloudinaryImageId, avgRating, cuisines, costForTwo } =  resobj?.card?.card?.info;
   return resobj.map((data) => {
