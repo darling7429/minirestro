@@ -1,22 +1,54 @@
 import React from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import ReactDOM from "react-dom/client";
-import Header,{Header as Myheader} from "./components/Header";
+import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Error from "./components/Error";
+
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Restromenu from "./components/Restromenu"
 
 
 const App = () => {
   return (
     <>
       <div className="app_wrapper">
-        <Myheader />
-        <Body />
-        <Footer />
+        <Header />
+        <Outlet/>
+        
       </div>
     </>
   );
 };
 
+const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",  
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path:"/restaurant/:id",
+        element:<Restromenu/>
+      }
+    ],
+    errorElement: <Error />,
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<RouterProvider router={routes} />);

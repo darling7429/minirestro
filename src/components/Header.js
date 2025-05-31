@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { LOGO_URL } from "../utils/constants";
+import { Link } from "react-router-dom";
 const Header = () => {
   const[login,setlogin]=useState(false)
   function handlelogin(){
     setlogin(!login)
   }
 
+  
+
+  useEffect(() => {
+      //fetchdata();
+  
+    },[login]);
   
   return (
     <div className="header">
@@ -18,8 +25,9 @@ const Header = () => {
       </div>
       <div className="nav_items">
         <ul>
-          <li>Swiggy corporate</li>
-          <li>Partner with Us</li>
+          <li><Link to="/" className="link">Home</Link></li>
+          <li><Link to="/about" className="link">About Swiggy</Link></li>
+          <li> <Link to="/contact" className="link">Contact with Us</Link></li>
 
           <button className="nav_button1">
             Get The App <i className="fa-solid fa-square-arrow-up-right"></i>
@@ -30,5 +38,5 @@ const Header = () => {
     </div>
   );
 };
-export{Header} 
+
 export default Header;
