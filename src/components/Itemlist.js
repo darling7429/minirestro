@@ -10,6 +10,7 @@ const Itemlist = (props) => {
  // console.log(props);
   const { name, price, description, imageId, defaultPrice } =
     props.data.card.info;
+    //console.log(props.data.card.info)
   const { rating } = props.data.card.info.ratings?.aggregatedRating;
 
   //console.log(props.data.card.info.name);

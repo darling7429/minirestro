@@ -17,7 +17,7 @@ const Header = () => {
 const cart=useSelector((store)=>{ return store.cart.items
 
 })
-console.log(cart)
+//console.log(cart)
  
 
 
