@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { CDN_URL } from "../utils/constants";
+import {additem,removeitem,clearcart} from "../redux/cart/Cartslice";
+import { useDispatch} from "react-redux";
 
 const Itemlist = (props) => {
-  const [open, setopen] = useState(false);
-  const [count, setcount] = useState(1);
+  
   const [task, settask] = useState(false);
 
  // console.log(props);
@@ -12,9 +13,15 @@ const Itemlist = (props) => {
   const { rating } = props.data.card.info.ratings?.aggregatedRating;
 
   //console.log(props.data.card.info.name);
-  const addquantity = () => {
-    setopen(true);
-  };
+  const dispatch=useDispatch()
+  const add_cart=(item)=>{
+    //console.log(item)
+    dispatch(additem(item))
+
+  
+    // console.log( props.data.card.info)
+  }
+  
   const viewcart = () => {
     alert(`cart has ${count} items 
     `);
@@ -35,38 +42,16 @@ const Itemlist = (props) => {
           </p>
         </div>
         <div className="item_image">
-          {open ? (
-            <div className="image_button">
-              <button
-                onClick={() => {
-                  setcount(count - 1);
-                  if (count == 1) {
-                    setopen(false);
-                    setcount(1);
-                    settask(false);
-                  }
-                }}>
-                -{" "}
-              </button>
-              {count}
-              <button
-                onClick={() => {
-                  setcount(count + 1);
-                }}>
-                {" "}
-                +
-              </button>
-            </div>
-          ) : (
+          {
             <button
               className="image_button"
               onClick={() => {
-                settask(true);
-                addquantity();
+                
+                add_cart( props.data.card.info)
               }}>
               ADD
             </button>
-          )}
+          }
 
           {imageId ? (
             <img src={CDN_URL + imageId} />

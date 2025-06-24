@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useNetwork from "../utils/useNetwork";
 import usercontext from "../utils/Usercontext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const{loggeduser}=useContext(usercontext)
@@ -12,7 +13,11 @@ const Header = () => {
   }
 
   const online=useNetwork()
-console.log(online)
+
+const cart=useSelector((store)=>{ return store.cart.items
+
+})
+console.log(cart)
  
 
 
@@ -41,8 +46,8 @@ console.log(online)
           </li>
           <li>
             
-            <Link  className="link">
-              Contact with Us
+            <Link  className="link" to="/cart">
+              cart({cart.length})
             </Link>
            
           </li>

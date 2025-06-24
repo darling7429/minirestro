@@ -6,19 +6,23 @@ import Body from "./components/Body";
 import Footer from "./components/Footer";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Error from "./components/Error";
-
+import Cart from "./components/Cart";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Restromenu from "./components/Restromenu";
 import Login from "./components/Login";
+import { Provider } from "react-redux";
+import appstore from "./redux/store/appstore";
 
 const App = () => {
   return (
     <>
-      <div className="app_wrapper">
-        <Header />
-        <Outlet />
-      </div>
+      <Provider store={appstore}>
+        <div className="app_wrapper">
+          <Header />
+          <Outlet />
+        </div>
+      </Provider>
     </>
   );
 };
@@ -41,12 +45,16 @@ const routes = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/login",element:<Login/>
-
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/restaurant/:id",
         element: <Restromenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
