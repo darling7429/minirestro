@@ -9,21 +9,20 @@ body {
 .header {
   width: 100%;
   height: 118px;
-  color: white;
+  color: red;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.app_wrapper {
-  background-color: #ff5200;
-}
 
 .body,
 .header,
-.restaurants {
+.restaurants,
+.footer {
   font-family: "Poppins", sans-serif;
 
   overflow-x: hidden;
+  background-color: #ff5200;
 }
 
 .logo {
@@ -177,6 +176,9 @@ input::placeholder {
 .res-description {
   color: gray;
 }
+.classpara {
+  color: black;
+}
 
 .res-card {
   width: 250px;
@@ -207,7 +209,7 @@ input::placeholder {
 }
 .res_inner {
   width: 100%;
-  padding:10px;
+  padding: 10px;
 }
 .res_inner:hover {
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
@@ -232,7 +234,7 @@ input::placeholder {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap:20px;
+  gap: 20px;
 }
 
 .side_img {
@@ -276,4 +278,111 @@ input::placeholder {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.api_image {
+  width: 100px;
+  height: 40px;
+}
+.spinner_para {
+  text-align: center;
+}
+
+.promoted {
+  position: absolute;
+  background-color: black;
+  color: white;
+  margin: auto;
+  padding: 3px;
+  border-radius: 1.3px;
+  font-weight: bolder;
+}
+
+.category_head {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  background-color: gray;
+  color: black;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.category_parent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.category_body {
+  width: 40%;
+}
+.item_desc{
+  width: 50%;
+}
+
+.res_intro {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+.item_list {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+
+  margin-bottom: 4px;
+  align-items: center;
+}
+
+.item_image {
+ width: 40%;
+  height: 150px;
+  margin-left: 40px;
+  position: relative;
+}
+
+.item_image > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  object-fit: cover;
+}
+.image_button {
+  position: absolute;
+  top: 120px;
+  left: 100px;
+  z-index: 2;
+  padding: 20px;
+  background-color: white;
+  color: green;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+.taskbar{
+  position:fixed;
+  bottom:0px;
+  display: flex;
+  justify-content: space-between;
+  width:40%;
+  background-color: green;
+  color:white;
+  font-weight: bolder;
+  padding:10px;
+  z-index:1000;
+  font-size: 1rem;
+  font-family: Gilroy, arial, "Helvetica Neue", sans-serif;
+
+}
+.cart{
+  cursor: pointer;
 }

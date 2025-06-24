@@ -31,4 +31,18 @@ const Restrocard = (props) => {
   );
 };
 
+export const   Withpromoted=(Data)=>{
+  return (props)=>{
+    return(
+      
+      <div>
+        <label className="promoted">promoted</label>
+        <Data {...props}/>
+      </div>
+      
+    )
+  }
+
+}
+
 export default Restrocard;

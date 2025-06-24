@@ -1,4 +1,4 @@
-import Restrocard from "./Restrocard";
+import Restrocard,{Withpromoted} from "./Restrocard";
 import resobj from "../utils/mockdata";
 import { SIDE_IMG1 } from "../utils/constants";
 import { SIDE_IMG2 } from "../utils/constants";
@@ -6,18 +6,23 @@ import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import useNetwork from "../utils/useNetwork"
 
 const Body = () => {
   const [data, setdata] = useState([]);
   const [search, setsearch] = useState("");
   const [onload, setonload] = useState([]);
   const [loading, isloading] = useState(false);
+  // //const online = useNetwork();
+  // console.log(online);
+
+  const Withdonepromoted=Withpromoted(Restrocard)
 
   function filterdata() {
     isloading(true);
     setTimeout(() => {
       let data2 = data.filter((data) => {
-        return data?.card?.card?.info?.avgRating > 4.3;
+        return data?.card?.card?.info?.avgRating > 4;
       });
       setonload(data2);
       isloading(false);
@@ -36,24 +41,31 @@ const Body = () => {
     setonload(search_res);
   }
   const fetchdata = async () => {
-    try {
-      isloading(true);
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=83639&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
-      );
+    
+      try {
+        isloading(true);
+        const data = await fetch(
+          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9352403&lng=77.624532&collection=83639&tags=layout_CCS_Biryani&sortBy=&filters=&type=rcv2&offset=0&page_type=null"
+        );
 
-      const json = await data.json();
+        const json = await data.json();
+        console.log(json?.data?.cards?.slice(3)[0].card.card.info.promoted)
 
-      setdata(json?.data?.cards?.slice(3));
+        setdata(json?.data?.cards?.slice(3));
 
-      setonload(json?.data?.cards?.slice(3));
-      isloading(false);
-    } catch (error) {}
+        setonload(json?.data?.cards?.slice(3));
+        isloading(false);
+      } catch (error) {}
+    
   };
 
   useEffect(() => {
     fetchdata();
   }, []);
+
+  // if (online === false) {
+  //   return <h1>no internet</h1>;
+  // }
 
   return loading ? (
     <Spinner />
@@ -88,9 +100,16 @@ const Body = () => {
           <img className="side_img2" src={SIDE_IMG2} />
         </div>
 
-        <div  className="restaurants">
+        <div className="restaurants">
           {onload.map((data) => {
-           return  <Link  key={data?.card?.card?.info.id}  to={"/restaurant/"+data?.card?.card?.info.id}><Restrocard resobj={data}  /></Link>;
+            return (
+              <Link
+                key={data?.card?.card?.info.id}
+                to={"/restaurant/" + data?.card?.card?.info.id}>
+                  {data.card.card.info.promoted?<Withdonepromoted resobj={data} />: <Restrocard resobj={data} />}
+               
+              </Link>
+            );
           })}
         </div>
       </div>

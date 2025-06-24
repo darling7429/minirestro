@@ -9,16 +9,15 @@ import Error from "./components/Error";
 
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Restromenu from "./components/Restromenu"
-
+import Restromenu from "./components/Restromenu";
+import Login from "./components/Login";
 
 const App = () => {
   return (
     <>
       <div className="app_wrapper">
         <Header />
-        <Outlet/>
-        
+        <Outlet />
       </div>
     </>
   );
@@ -30,7 +29,7 @@ const routes = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/",  
+        path: "/",
         element: <Body />,
       },
       {
@@ -42,9 +41,13 @@ const routes = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/restaurant/:id",
-        element:<Restromenu/>
-      }
+        path:"/login",element:<Login/>
+
+      },
+      {
+        path: "/restaurant/:id",
+        element: <Restromenu />,
+      },
     ],
     errorElement: <Error />,
   },

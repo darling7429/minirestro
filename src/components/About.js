@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+// import Userclass from "./Userclass";
+
 
 const About = () => {
   return (
-    <div>About</div>
-  )
-}
+    <div>
+      {/* <Userclass /> */}
+    </div>
+  );
+};
 
-export default About
+export default About;
