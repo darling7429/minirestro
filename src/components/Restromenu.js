@@ -71,7 +71,7 @@ const Restromenu = () => {
       <Rescategory key={item.card.card.title} 
       data={item.card.card} completeAddress={completeAddress}
        />)}
-       <div className='footer'>
+       <div className='address'>
       <p>Address:{completeAddress?completeAddress:""}</p>
 
     </div></>

@@ -6,26 +6,22 @@ import usercontext from "../utils/Usercontext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const{loggeduser}=useContext(usercontext)
+  const { loggeduser } = useContext(usercontext);
   const [login, setlogin] = useState(false);
   function handlelogin() {
     setlogin(!login);
   }
 
-  const online=useNetwork()
+  const online = useNetwork();
 
-const cart=useSelector((store)=>{ return store.cart.items
-
-})
-//console.log(cart)
- 
-
+  const cart = useSelector((store) => {
+    return store.cart.items;
+  });
+  //console.log(cart)
 
   useEffect(() => {
     //fetchdata();
   }, [login]);
-
-  
 
   return (
     <div className="header">
@@ -40,28 +36,19 @@ const cart=useSelector((store)=>{ return store.cart.items
             </Link>
           </li>
           <li>
-            <Link  className="link">
-              About Swiggy
-            </Link>
+            <Link className="link">About Swiggy</Link>
           </li>
           <li>
-            
-            <Link  className="link" to="/cart">
-              cart({cart.length})
+            <Link className="link" to="/cart">
+              <i className="fas fa-shopping-cart">{cart.length}</i>
             </Link>
-           
           </li>
           <li>
             <Link to="/" className="link">
-            user: {loggeduser}
+              user: {loggeduser}
             </Link>
-           
           </li>
-        
 
-          
-
-          
           <button className="nav_button2" onClick={handlelogin}>
             {login ? "Sign-out" : "Sign-in"}
           </button>

@@ -21,6 +21,7 @@ const App = () => {
         <div className="app_wrapper">
           <Header />
           <Outlet />
+          
         </div>
       </Provider>
     </>
