@@ -2,6 +2,7 @@
   "name": "swiggy",
   "version": "1.0.0",
   "description": "it is an small react application ",
+  "type": "module",
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
@@ -15,7 +16,18 @@
   "author": "naresh",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.15.1"
+    "@babel/core": "^7.27.7",
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "babel-jest": "^30.0.2",
+    "jest": "^30.0.3",
+    "jest-environment-jsdom": "^30.0.2",
+    "jsdom": "^26.1.0",
+    "parcel": "^2.15.1",
+    "ts-jest": "^29.4.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",

@@ -38,6 +38,9 @@ const Header = () => {
           <li>
             <Link className="link">About Swiggy</Link>
           </li>
+           <li>
+            <Link className="link" to='/contact'>Contact</Link>
+          </li>
           <li>
             <Link className="link" to="/cart">
               <i className="fas fa-shopping-cart">{cart.length}</i>
